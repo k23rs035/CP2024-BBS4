@@ -8,6 +8,8 @@
     <script src="components/loader.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
+<script src="components/sns.js"></script>
+<link rel="stylesheet" href="css/sns.css">
 
     <!-- Firebase SDKの読み込み -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -174,6 +176,18 @@ function createPostElement(post) {
                 削除
             </button>
         </div>
+        <div class="post-sns">
+    <button class="btn-like" onclick="toggleLike('${post.id}')">
+        いいね (<span id="like-count-${post.id}">${post.likes || 0}</span>)
+    </button>
+    <button class="btn-comment" onclick="toggleCommentSection('${post.id}')">
+        コメント
+    </button>
+    <button class="btn-share" onclick="sharePost('${post.id}')">
+        シェア
+    </button>
+</div>
+
     ` : '';
 
     return `
@@ -203,6 +217,9 @@ function createPostElement(post) {
                     <span class="post-updated">
                         (編集済み: ${formatTimestamp(post.updatedAt)})
                     </span>
+                    post.likes = post.likes || 0;
+post.comments = post.comments || [];
+
                 ` : ''}
             </div>
         </div>
@@ -265,11 +282,13 @@ function loadPosts() {
 function showModal(modalId) {
     $(`#${modalId}`).fadeIn(200);
     $('body').addClass('modal-open');
+    
 }
 
 function closeModal(modalId) {
     $(`#${modalId}`).fadeOut(200);
     $('body').removeClass('modal-open');
+    
 }
 
 // 更新処理のハンドラ
