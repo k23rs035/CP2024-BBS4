@@ -224,15 +224,6 @@ function renderPosts(posts) {
     });
 }
 
-//12/05追加プログラム
-// メンション検出とHTMLリンクへの変換
-function parseMentions(content) {
-    // メンションを正規表現で検出し、HTMLリンクに変換
-    const mentionRegex = /@([a-zA-Z0-9_]+)/g;
-    return content.replace(mentionRegex, '<span class="mention">@$1</span>');
-}
-
-
 // 投稿の読み込み
 function loadPosts() {
     const sortOrder = $('#sortOrder').val();
