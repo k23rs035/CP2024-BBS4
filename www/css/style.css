@@ -507,3 +507,52 @@ textarea.form-control {
 .logged-out {
     display: none;
 }
+
+.btn-like, .btn-comment {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.comments-section {
+    margin-top: 15px;
+    padding-left: 15px;
+    border-left: 2px solid #ddd;
+}
+
+.comment-item {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ボタンの基本スタイル (3分の1サイズに変更) */
+.btn-like {
+    display: inline-block;
+    padding: 5px 10px; /* パディングを小さくしてボタンの高さを縮小 */
+    font-size: 10px; /* フォントサイズを小さくする */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff; /* ブルーの背景色 */
+    border: none;
+    border-radius: 3px; /* ボタンの丸みを小さく調整 */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* ホバー時のスタイル */
+.btn-like:hover {
+    background-color: #0056b3; /* ダークブルー */
+    transform: scale(1.05); /* 少し大きくする */
+}
+
+/* アクティブ時のスタイル */
+.btn-like:active {
+    background-color: #004080; /* さらに濃いブルー */
+    transform: scale(0.95); /* 少し縮む */
+}
+
+/* ボタンが無効化されている場合のスタイル */
+.btn-like:disabled {
+    background-color: #cccccc; /* グレー */
+    cursor: not-allowed;
+}
